@@ -8,6 +8,13 @@
       "when": 1787568639286,
       "tag": "0000_military_triathlon",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1788533443722,
+      "tag": "0001_faithful_quasimodo",
+      "breakpoints": true
     }
   ]
 }
