@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import subjectsRouter from "./router/subjects.js";
 import cors from "cors";
+import securityMiddleware from "./middleware/security.js";
 
 dotenv.config();
 
@@ -20,6 +21,8 @@ app.use(
 );
 
 app.use(express.json());
+
+app.use(securityMiddleware)
 
 app.use("/api/subjects", subjectsRouter);
 
