@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import subjectsRouter from "./router/subjects.js";
 import cors from "cors";
-import securityMiddleware from "./middleware/security.ts";
+import securityMiddleware from "./middleware/security.js";
 
 dotenv.config();
 
