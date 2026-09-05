@@ -28,7 +28,10 @@
     "skipLibCheck": true,
 
     /* Environment types */
-    "types": ["node"]
+    "types": ["node"],
+
+    "allowImportingTsExtensions": true,
+    "noEmit": true // Required when using allowImportingTsExtensions
   },
   "include": ["src"]
 }
