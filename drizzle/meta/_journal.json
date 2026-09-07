@@ -15,6 +15,13 @@
       "when": 1788533443722,
       "tag": "0001_faithful_quasimodo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788799247167,
+      "tag": "0002_concerned_mach_iv",
+      "breakpoints": true
     }
   ]
 }

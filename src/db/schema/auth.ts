@@ -7,7 +7,7 @@ import {
   index,
   pgEnum,
 } from "drizzle-orm/pg-core";
-import { classes, enrollments } from "./app";
+import { classes, enrollments } from "./app.js";
 
 const timeStamp = {
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -62,6 +62,7 @@ export const account = pgTable(
     refreshTokenExpiresAt: timestamp("refresh_token_expires_at"),
     scope: text("scope"),
     password: text("password"),
+    issuer: text("issuer"),
     ...timeStamp,
   },
   (table) => [index("account_userId_idx").on(table.userId)],
