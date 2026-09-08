@@ -6,6 +6,7 @@ import {
   boolean,
   index,
   pgEnum,
+  unique,
 } from "drizzle-orm/pg-core";
 import { classes, enrollments } from "./app.js";
 
@@ -62,10 +63,13 @@ export const account = pgTable(
     refreshTokenExpiresAt: timestamp("refresh_token_expires_at"),
     scope: text("scope"),
     password: text("password"),
-    issuer: text("issuer"),
+    issuer: text("issuer").notNull(),
     ...timeStamp,
   },
-  (table) => [index("account_userId_idx").on(table.userId)],
+  (table) => [
+    index("account_userId_idx").on(table.userId),
+    unique("account_issuer_accountId_unique").on(table.issuer, table.accountId),
+  ],
 );
 
 export const verification = pgTable(
