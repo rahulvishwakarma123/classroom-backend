@@ -3,8 +3,10 @@ import dotenv from "dotenv";
 import subjectsRouter from "./router/subjects.js";
 import cors from "cors";
 import securityMiddleware from "./middleware/security.js";
-
 dotenv.config();
+import { toNodeHandler } from "better-auth/node";
+import { auth } from "./lib/auth.js";
+
 
 const app = express();
 const PORT = 8000;
@@ -20,9 +22,18 @@ app.use(
   }),
 );
 
+
+
+
+app.use(securityMiddleware);
+
+// Better Auth handler - mount at specific path
+app.use("/api/auth", toNodeHandler(auth));
+
 app.use(express.json());
 
-app.use(securityMiddleware)
+
+
 
 app.use("/api/subjects", subjectsRouter);
 

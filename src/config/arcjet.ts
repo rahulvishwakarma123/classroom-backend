@@ -10,7 +10,9 @@ export const aj = arcjet({
     shield({ mode: "LIVE" }),
     detectBot({
       mode: "LIVE",
-      allow: ["CATEGORY:SEARCH_ENGINE", "CATEGORY:PREVIEW"],
+
+      //TODO: make sure to remove postman from the allowed list when deploying the application
+      allow: ["CATEGORY:SEARCH_ENGINE", "CATEGORY:PREVIEW","POSTMAN"],
     }),
     // Create a token bucket rate limit. Other algorithms are supported.
     slidingWindow({
