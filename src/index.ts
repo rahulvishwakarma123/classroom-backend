@@ -1,6 +1,5 @@
-import AgentAPI from 'apminsight'
+import AgentAPI from "apminsight";
 AgentAPI.config();
-
 
 import express from "express";
 import dotenv from "dotenv";
@@ -10,7 +9,6 @@ import securityMiddleware from "./middleware/security.js";
 dotenv.config();
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./lib/auth.js";
-
 
 const app = express();
 const PORT = 8000;
@@ -23,11 +21,9 @@ app.use(
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
-
-
-
 
 app.use(securityMiddleware);
 
@@ -35,9 +31,6 @@ app.use(securityMiddleware);
 app.use("/api/auth", toNodeHandler(auth));
 
 app.use(express.json());
-
-
-
 
 app.use("/api/subjects", subjectsRouter);
 
