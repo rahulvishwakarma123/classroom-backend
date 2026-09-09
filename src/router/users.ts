@@ -23,16 +23,19 @@ router.get("/", async (req, res) => {
     // if search query exists, filter by user name or email
     if (search) {
       filterConditions.push(
-        or(
-          ilike(user.name, `%${search}%`),
-          ilike(user.email, `%${search}%`),
-        ),
+        or(ilike(user.name, `%${search}%`), ilike(user.email, `%${search}%`)),
       );
     }
 
     // if role filter exists, match role exactly
     if (role) {
-      filterConditions.push(eq(user.role, String(role)));
+      const validRoles = ["student", "teacher", "admin"] as const;
+      const roleValue = String(role);
+      if (validRoles.includes(roleValue as any)) {
+        filterConditions.push(
+          eq(user.role, roleValue as "student" | "teacher" | "admin"),
+        );
+      }
     }
 
     // combine all the filters if any exist using AND
