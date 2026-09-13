@@ -6,6 +6,9 @@ import dotenv from "dotenv";
 import subjectsRouter from "./router/subjects.js";
 import usersRouter from "./router/users.js";
 import classesRouter from "./router/classes.js";
+import enrollmentsRouter from "./router/enrollments.js";
+import statesRouter from "./router/states.js";
+import departmentsRouter from "./router/departments.js";
 import cors from "cors";
 import securityMiddleware from "./middleware/security.js";
 dotenv.config();
@@ -42,6 +45,9 @@ app.use(express.json());
 app.use("/api/subjects", subjectsRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/classes", classesRouter);
+app.use("/api/departments", departmentsRouter);
+app.use("/api/states", statesRouter);
+app.use("/api/enrollments", enrollmentsRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello, Welcome to classroom API.");
