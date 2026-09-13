@@ -123,7 +123,7 @@ router.get("/:userId/departments", async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    if (userResult[0].role !== "teacher") {
+    if (userResult[0]?.role !== "teacher") {
       return res
         .status(403)
         .json({ error: "Only teachers can have departments" });
@@ -187,7 +187,7 @@ router.get("/:userId/subjects", async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    if (userResult[0].role !== "teacher") {
+    if (userResult[0]?.role !== "teacher") {
       return res.status(403).json({ error: "Only teachers can have subjects" });
     }
 
